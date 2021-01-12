@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.Lecha.mapper.EvBoardDAO">
+	<insert id="evInsert">
+		insert into
+		evboard(id,lecturename,lectureteacher,lectureyear,quarterdivide,lecturedivide,lecturetitle,lecturecontent,relevancescore,efficiencyscore,effectivenessscore,sustainabilityscore,lecturefee,uploadPath)
+		values(#{id},#{lecturename},#{lectureteacher},#{lectureyear},#{quarterdivide},#{lecturedivide},#{lecturetitle},#{lecturecontent},#{relevancescore},#{efficiencyscore},#{effectivenessscore},#{sustainabilityscore},#{lecturefee},#{uploadPath});
+	</insert>
+	<select id="evList" resultType="org.Lecha.dto.EvBoardDTO">
+		select *
+		from (
+		select
+		@rownum:=@rownum+1 as rownum,
+		ev.*,
+		(select count(*)
+		from ev_reply reply where reply.bno=ev.bno) as reply_cnt,
+		(select
+		count(*) from ev_likes likes where likes.bno=ev.bno) as likes_cnt
+		from
+		(select @rownum:=0) as tmp,evboard ev
+		<if test="searchType==null">
+			order by bno desc
+		</if>
+		<if test='searchType == "new"'>
+			<if test='type == "tc"'>
+				where lecturecontent like concat('%',#{keyword},'%') or
+				lecturetitle like
+				concat('%',#{keyword},'%')
+			</if>
+			<if test='type == "l"'>
+				where lecturename like concat('%',#{keyword},'%') or
+				lectureteacher like
+				concat('%',#{keyword},'%')
+			</if>
+			<if test='type == "w"'>
+				where id like concat('%',#{keyword},'%')
+			</if>
+			order by bno desc
+		</if>
+		<if test="searchType == 'like'">
+			<if test='type == "tc"'>
+				where lecturecontent like concat('%',#{keyword},'%') or
+				lecturetitle like
+				concat('%',#{keyword},'%')
+			</if>
+			<if test='type == "l"'>
+				where lecturename like concat('%',#{keyword},'%') or
+				lectureteacher like
+				concat('%',#{keyword},'%')
+			</if>
+			<if test='type == "w"'>
+				where id like concat('%',#{keyword},'%')
+			</if>
+			order by likes_cnt desc
+		</if>
+		) as pagingboard
+				<![CDATA[where rownum>(#{pageNum}-1)*#{amount} and rownum<=(#{pageNum})*#{amount};]]>
+	</select>
+	<select id="SearchevList" resultType="org.Lecha.dto.EvBoardDTO">
+
+
+	</select>
+	<!-- 게시물 상세정보 -->
+	<select id="evDetail" resultType="org.Lecha.dto.EvBoardDTO">
+		select * from evboard where
+		bno=#{bno};
+	</select>
+	<!-- 조회수 -->
+	<update id="getViews" parameterType="int">
+		update evboard set
+		views=views+1 where bno=#{bno};
+
+	</update>
+	<!-- 게시물 총갯수 -->
+	<select id="getTotal" resultType="int">
+		select count(*) from evboard
+	</select>
+	<!-- 댓글갯수 -->
+	<select id="getReplyCount" resultType="int">
+		select count(*) from
+		ev_reply where bno=#{bno};
+	</select>
+	<!-- 게시글 수정 -->
+	<update id="evUpdate">
+		update evboard
+		set
+		lecturename=#{lecturename},lectureteacher=#{lectureteacher},lectureyear=#{lectureyear},quarterdivide=#{quarterdivide},lecturedivide=#{lecturedivide},lecturetitle=#{lecturetitle},lecturecontent=#{lecturecontent},relevancescore=#{relevancescore},efficiencyscore=#{efficiencyscore},effectivenessscore=#{effectivenessscore},sustainabilityscore=#{sustainabilityscore}
+		where bno=#{bno};
+	</update>
+	<!-- 게시글 삭제 -->
+	<delete id="evDelete">
+		delete from evboard where bno=#{bno};
+	</delete>
+</mapper>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.Lecha.mapper.LikeDAO">
+	<insert id="likeInsert">
+		insert into ev_likes(id,bno)
+		values(#{id},#{bno});
+	</insert>
+	<select id="likeCheck" resultType="org.Lecha.dto.LikeDTO">
+		select * from ev_likes where id=#{id} and bno=#{bno};
+	</select>
+	<delete id="likeDelete">
+		delete from ev_likes where id=#{id} and bno=#{bno};
+	</delete>
+</mapper>
