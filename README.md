@@ -12,7 +12,7 @@ html/css : 부트스트랩 v5.0.0-beta1으로 구현
 
 ![image](https://user-images.githubusercontent.com/71121027/104991069-415eee00-5a61-11eb-90b2-f1c4d971d3d3.png)
 
-<hr align="left" style="border: solid 10px green; width: 50%;">
+---------------------------------
 
 <h3>회원가입</h3>
 
