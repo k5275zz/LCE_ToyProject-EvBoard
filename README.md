@@ -21,7 +21,15 @@
 <h5>게시판</h5>
 
 ![image](https://user-images.githubusercontent.com/71121027/104991395-f98c9680-5a61-11eb-998c-d768675a1eea.png)
-<h5></h5>
-<h5></h5>
+
+<h5>게시판상세페이지</h5>
+
+![image](https://user-images.githubusercontent.com/71121027/104991504-3eb0c880-5a62-11eb-98ec-f1f7dc034a3c.png)
+
+<h5>강의평가등록하기(글쓰기)</h5>
+<br>
+부트스트랩 모달기능을 활용하여 만들었습니다.
+
+![image](https://user-images.githubusercontent.com/71121027/104991563-6142e180-5a62-11eb-9e99-be669243ea05.png)
 <h5></h5>
 
