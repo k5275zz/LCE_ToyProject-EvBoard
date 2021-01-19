@@ -36,4 +36,7 @@ html/css : 부트스트랩 v5.0.0-beta1으로 구현
 <h3>신고하기</h3>
 
 <img src="https://user-images.githubusercontent.com/71121027/104991853-0b226e00-5a63-11eb-8b94-e45749c41060.png" width="40%">
+<hr>
+
+
 
