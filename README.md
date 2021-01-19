@@ -3,6 +3,8 @@
 이 프로젝트는 개인프로젝트입니다.
 <br>
 프로젝트의 내용은 강의평가게시판입니다.
+<br>
+html/css : 부트스트랩 v5.0.0-beta1으로 구현
 <hr>
 <h2>Ui</h2>
 <br>
@@ -28,8 +30,11 @@
 
 <h5>강의평가등록하기(글쓰기)</h5>
 <br>
-부트스트랩 모달기능을 활용하여 만들었습니다.
+부트스트랩 모달기능을 활용하였습니다.
+<br>
+<img src="![image](https://user-images.githubusercontent.com/71121027/104991563-6142e180-5a62-11eb-9e99-be669243ea05.png)" width="40%">
 
-![image](https://user-images.githubusercontent.com/71121027/104991563-6142e180-5a62-11eb-9e99-be669243ea05.png)
-<h5></h5>
+<h5>신고하기</h5>
+
+<img src="![image](https://user-images.githubusercontent.com/71121027/104991853-0b226e00-5a63-11eb-8b94-e45749c41060.png)" width="40%">
 
